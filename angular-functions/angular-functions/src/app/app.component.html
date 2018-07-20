@@ -1,0 +1,21 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    {{ title }}!
+  </h1>
+</div>
+<h2>Let's try this</h2>
+
+<input [(ngModel)]="num1"   />
+
+<br /><br />
+
+<input [(ngModel)]="num2" />
+
+<br /><br />
+
+<button (click)="getResult()">Get Result</button>
+
+<br /><br />
+
+<p>{{ result?.result }}</p>
