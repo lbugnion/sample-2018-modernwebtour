@@ -30,11 +30,16 @@
     {
         display = "Please wait...";
 
-        var json = await Http.GetStringAsync(
+        var result = await Http.GetJsonAsync<FunctionResult>(
             Url
                 .Replace("{num1}", num1.ToString())
                 .Replace("{num2}", num2.ToString()));
 
-        display = json;
+        display = result.Result.ToString();
+    }
+
+    class FunctionResult
+    {
+        public int Result { get; set; }
     }
 }
