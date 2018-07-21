@@ -1,0 +1,56 @@
+﻿@page "/counter"
+@inject HttpClient Http
+
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary"
+        onclick="@IncrementCount">
+    Click me
+</button>
+
+<hr />
+
+<input type="text" value="@num1" />
+<br /><br />
+<input type="text" value="@num2" />
+
+<br /><br />
+
+<button class="btn btn-primary"
+        onclick="@ConnectToFunction">
+    Check the function
+</button>
+
+<br /><br />
+
+<p>@display</p>
+
+@functions {
+
+    const string Url = "https://lbcalculator.azurewebsites.net/api/add/num1/{num1}/num2/{num2}?code=r9o3qY/Zy0slf4IddK0qq8dNxkDraglwGKaKaCp3D8PFGAorrWosIQ==";
+
+    int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+    int num1 = 12;
+    int num2 = 30;
+    string display = "Nothing yet";
+
+    private async Task ConnectToFunction()
+    {
+        display = "Please wait...";
+
+        var json = await Http.GetStringAsync(
+            Url
+                .Replace("{num1}", num1.ToString())
+                .Replace("{num2}", num2.ToString()));
+
+        display = json;
+    }
+}
