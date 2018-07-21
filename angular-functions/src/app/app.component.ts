@@ -12,8 +12,8 @@ export class AppComponent {
   result : any = {
     result : "Nothing yet"
   };
-  num1 = 12;
-  num2 = 30;
+  num1 = 0;
+  num2 = 0;
 
   title = 'Testing Azure Functions';
 
